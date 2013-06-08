@@ -1,4 +1,6 @@
 jq-disabled-inputs
 ==================
 
-Simple little plugin extends jquery, so that calling .serialize(), .serializeArray() and .val() on disabled inputs still returns a result.
+This plugin simply makes it so .val(), .serialize() and .serializeArray() jquery methods will reliably return values even when disabled. This means you can disable forms of inputs, and still recieve all their values.
+
+*Note this will not work only for elements disabled using .attr() or .prop()
