@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+        <script type="text/javascript" src="jq.disabled-inputs.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#disableA').click(function(){
+                    $('.target').prop('disabled', !$('.target').prop('disabled'));
+                });
+                $('#disableB').click(function(){
+                    $('.target').attr('disabled', !$('.target').attr('disabled'));
+                });
+                $('#set').click(function(){
+                    $('#targetA').val($('#set_val').val());
+                });
+                $('#retrieveA').click(function(){
+                    $('#retrieveA_v').val($('#targetA').val());
+                });
+                $('#retrieveB').click(function(){
+                    $('#retrieveB_v').val($('#target_form').serialize());
+                });
+                $('#retrieveC').click(function(){
+                    $('#retrieveC_v').val(JSON.stringify($('#target_form').serializeArray()));
+                });
+                $('#target_form').click(function(e){e.preventDefault();return false;})
+            });
+        </script>
+        <style type="text/css">
+            body{font-family:verdana;}
+            div{width:800px;margin:0 auto;}
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>JQuery Disabled Inputs Plugin</h2>
+            <p>This plugin simply makes it so .val(), .serialize() and .serializeArray() jquery methods will reliably return values even when disabled. This means you can disable forms of inputs, and still recieve all their values.</p>
+            <p>*Note this will not work only for elements disabled using .attr() or .prop()</p>
+            <h3>Test bench:</h3>
+            <form id="target_form">
+                <table>
+                    <tr>
+                        <td>Target input A:</td>
+                        <td><input class="target" id="targetA" name="targetA" type="text" value="Aa" size="50" /></form></td>
+                    </tr>
+                    <tr>
+                        <td>Target input B:</td>
+                        <td><input class="target" id="targetB" name="targetB" type="text" value="Bb" size="50" /></form></td>
+                    </tr>
+                    <tr>
+                        <td>Form input C:</td>
+                        <td><input id="targetC" name="targetC" type="text" value="Cc" size="50" /></form></td>
+                    </tr>
+                    <tr>
+                        <td>Form input D:</td>
+                        <td><input id="targetD" name="targetD" type="text" value="Dd" size="50" /></form></td>
+                    </tr>
+                </table>
+            </form>
+            <table>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input id="disableA" type="button" value="Toggle disabled using jQuery.prop()" /></td>                    
+                </tr>
+                <tr>
+                    <td><input id="disableB" type="button" value="Toggle disabled using jQuery.attr()" /></td>                    
+                </tr>
+                <tr>
+                    <td><input id="set" type="button" value="Force Set Value" /></td>
+                    <td><input id="set_val" type="text" value="" size="100" /></td>                    
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input id="retrieveA" type="button" value="Retrieve Value using jQuery.val()" /></td>
+                    <td><input id="retrieveA_v" type="text" value="" size="100" readonly /></td>                    
+                </tr>
+                <tr>
+                    <td><input id="retrieveB" type="button" value="Retrieve Value using jQuery.serialize()" /></td>
+                    <td><input id="retrieveB_v" type="text" value="" size="100" readonly /></td>                    
+                </tr>
+                <tr>
+                    <td><input id="retrieveC" type="button" value="Retrieve Value using jQuery.serializeArray()" /></td>
+                    <td><input id="retrieveC_v" type="text" value="" size="100" readonly /></td>                    
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
