@@ -1,0 +1,8 @@
+{
+    "name":"",
+    "version":"0.0.1",
+    "title":"Jquery Disabled Inputs Plugin",
+    "author":"Jezternz",
+    "licenses": [],
+    "dependencies":"jquery"
+}
