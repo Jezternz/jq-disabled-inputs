@@ -8,7 +8,9 @@
             if(typeof value == 'undefined'){
                 return this.first().data('before-disabled-value');
             } else {
-                this.first().data('before-disabled-value', value);
+                this.each(function(){
+                    $(this).data('before-disabled-value', value);
+                });
             }
         }
         return oldval.apply(this, arguments);
@@ -18,7 +20,9 @@
     {
         if(typeof value != 'undefined' && name == "disabled")
         {
-            this.first().data('before-disabled-value', this.val());
+            this.each(function(){
+                $(this).data('before-disabled-value', $(this).val());
+            });
         }
         return oldProp.apply(this, arguments);
     } 
@@ -27,7 +31,9 @@
     {
         if(typeof value != 'undefined' && name == "disabled")
         {
-            this.first().data('before-disabled-value', this.val());
+            this.each(function(){
+                $(this).data('before-disabled-value', $(this).val());
+            });
         }
         return oldAttr.apply(this, arguments);
     }
